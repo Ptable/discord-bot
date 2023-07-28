@@ -60,7 +60,7 @@ async def on_ready():
 
 
 # /chat message:
-@tree.command(name="chat", description="Create a new thread for conversation")
+@tree.command(name="help", description="Start a new homework help thread")
 @discord.app_commands.checks.has_permissions(send_messages=True)
 @discord.app_commands.checks.has_permissions(view_channel=True)
 @discord.app_commands.checks.bot_has_permissions(send_messages=True)
@@ -127,7 +127,7 @@ async def chat_command(
                 return
 
             embed = discord.Embed(
-                description=f"<@{user.id}> wants to chat! 🤖💬",
+                description=f"<@{user.id}> has a question:",
                 color=discord.Color.green(),
             )
             embed.add_field(name="model", value=model)
@@ -160,7 +160,7 @@ async def chat_command(
         # create the thread
         thread = await response.create_thread(
             name=f"{ACTIVATE_THREAD_PREFX} {user.name[:20]} - {message[:30]}",
-            slowmode_delay=1,
+            slowmode_delay=15,
             reason="gpt-bot",
             auto_archive_duration=60,
         )

@@ -1,0 +1,16 @@
+[Unit]
+Description=Discord GPT Homework Help Bot
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+User=www-data
+WorkingDirectory=/var/www/periodic/bot-discord
+ExecStart=/var/www/periodic/bot-discord/environment/bin/python -m src.main
+
+[Install]
+WantedBy=multi-user.target
+

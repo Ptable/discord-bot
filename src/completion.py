@@ -111,12 +111,13 @@ async def process_response(
     if status is CompletionResult.OK or status is CompletionResult.MODERATION_FLAGGED:
         sent_message = None
         if not reply_text:
-            sent_message = await thread.send(
-                embed=discord.Embed(
-                    description=f"**Invalid response** - empty response",
-                    color=discord.Color.yellow(),
-                )
-            )
+            pass
+#           sent_message = await thread.send(
+#               embed=discord.Embed(
+#                   description=f"**Invalid response** - empty response",
+#                   color=discord.Color.yellow(),
+#               )
+#           )
         else:
             shorter_response = split_into_shorter_messages(reply_text)
             for r in shorter_response:
